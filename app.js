@@ -1,13 +1,30 @@
 function Cnt($scope) {
-  var notes = $scope.notes = [];
-  $scope.saveNote = function(note) {
-     notes.push(note);
-     $scope.note = "";
+
+  $scope.saved = localStorage.getItem('notes');
+  $scope.notes = (localStorage.getItem('notes')!==null) ? JSON.parse($scope.saved) : [ {text: 'Learn AngularJS', done: false}, {text: 'Build an Angular app', done: false} ];
+  localStorage.setItem('notes', JSON.stringify($scope.notes));
+
+
+  $scope.saveNote = function() {
+    $scope.notes.push({
+      text: $scope.note,
+      done: false
+    });
+    $scope.note = ''; //clear the input after adding
+    localStorage.setItem('notes', JSON.stringify($scope.notes));
   };
 
-  $scope.removeNote = function(index) {
-  	notes.splice(index, 1);
+
+   $scope.removeNote = function() {
+    var oldNotes = $scope.notes;
+    $scope.notes = [];
+    angular.forEach(oldNotes, function(note){
+      if (!note.done)
+        $scope.notes.push(note);
+    });
+    localStorage.setItem('notes', JSON.stringify($scope.notes));
   };
+
    $scope.bgstyle = function (index) {
     var red = 215;
     var green = 40 + (index * 15);
@@ -16,5 +33,5 @@ function Cnt($scope) {
     var sColor = '#' + rgb.toString(16);
     console.log(sColor);
     return {backgroundColor: sColor};
-}
+    };
 }

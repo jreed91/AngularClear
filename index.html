@@ -4,20 +4,25 @@
 	</head>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
 	<script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src="angular-local-storage.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="style.css">
 <body>
 	<div class="wrap" ng-controller="Cnt">
 	<form>
-		<input type="text" ng-model="note" class="input" ng-submit="saveNote(note)" /><button id="save" ng-click="saveNote(note)">Save</button>
+		<input type="text" data-ng-model="note" class="input" ng-submit="saveNote()" />
+		<button id="save" data-ng-click="saveNote()">Save</button>
 	</form>
 	
 	<ul>
 		<li ng-repeat="note in notes track by $index" ng-style="bgstyle($index)" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
-		<a href="" class="remove" ng-click="removeNote($index)">X</a>
-		{{note}}
+			<input type="checkbox" data-ng-model="note.done"></a>
+				<span class="done-{{ note.done }}">{{ note.text }}</span>
 		</li>
 	</ul>
+	<div class="clear">
+	<a href="" class="remove" data-ng-click="removeNote()">Clear</a>
+	</div>
 	</div>
 </body>
 </html>

@@ -11,7 +11,11 @@ wrap {
 form {
 	margin-bottom: 0px;
 }
-input {
+.done-true {
+text-decoration: line-through;
+color: white;
+}
+input[type="text"] {
 	border: none;
 	width: 90%;
 	background-color: #d70007;
@@ -64,6 +68,14 @@ ul{
     display: inline-block;
     cursor: pointer;
     color: white;
+}
+.clear {
+	text-align: center;
+	margin-top: 50%;
+}
+.clear a {
+	color: white;
+
 }
 
 
