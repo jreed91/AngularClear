@@ -2,12 +2,15 @@ body {
 	font-family: Helvetica, sans-serif;
 	font-size: 24px/16px;
 	margin: 0px;
+	background-color: black;
 }
 
 wrap {
 	max-width: 720px;
 }
-
+form {
+	margin-bottom: 0px;
+}
 input {
 	border: none;
 	width: 90%;
@@ -38,12 +41,14 @@ li {
 	color: white;
 	font-size: 24px;
 }
+
 tt{
 	font-family: Helvetica;
 }
 .remove {
 	text-decoration: none;
-	color: grey;
+	color: black;
+	padding: 20px;
 }
 ul{
 	margin: 0px;

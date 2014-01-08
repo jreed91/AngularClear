@@ -9,11 +9,12 @@ function Cnt($scope) {
   	notes.splice(index, 1);
   };
    $scope.bgstyle = function (index) {
-    var red = 255;
-    var green = 255-index;
-    var blue = 255-index;
+    var red = 215;
+    var green = 40 + (index * 15);
+    var blue = 40 + (index * 15);
     var rgb = blue | (green << 8) | (red << 16);
     var sColor = '#' + rgb.toString(16);
+    console.log(sColor);
     return {backgroundColor: sColor};
 }
 }

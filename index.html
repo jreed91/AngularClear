@@ -8,11 +8,14 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 <body>
 	<div class="wrap" ng-controller="Cnt">
-	<input type="text" ng-model="note" class="input" /><button id="save" ng-click="saveNote(note)">Save</button>
+	<form>
+		<input type="text" ng-model="note" class="input" ng-submit="saveNote(note)" /><button id="save" ng-click="saveNote(note)">Save</button>
+	</form>
+	
 	<ul>
-		<li ng-repeat="note in notes track by $index" ng-style="bgstyle(note.$index)">
+		<li ng-repeat="note in notes track by $index" ng-style="bgstyle($index)" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
 		<a href="" class="remove" ng-click="removeNote($index)">X</a>
-		<tt>{{note}}</tt>
+		{{note}}
 		</li>
 	</ul>
 	</div>
