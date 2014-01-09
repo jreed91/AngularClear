@@ -1,0 +1,30 @@
+<html ng-app="clearApp">
+	<head>
+		<title></title>
+	</head>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src="angular-local-storage.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<script type="text/javascript" src="http://code.angularjs.org/1.2.7/angular-animate.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+<body ng-controller="Cnt">
+	<div class="wrap" >
+	<form id="addNote">
+		<input type="text" data-ng-model="note" class="input" ng-submit="saveNote()" />
+		<button id="save" data-ng-click="saveNote()">Save</button>
+	</form>
+	
+	<ul id="sortable">
+		<li class="" list="check" bgcolor dnd-list="model" ng-repeat="note in notes track by $index" ng-style="bgstyle($index)">
+			<input type="checkbox" value="set" data-ng-model="note.done"></a>
+				<span class="done-{{ note.done }}">{{ note.text }}</span>
+		</li>
+	</ul>
+	</div>
+	<div class="clear">
+	<a href="" class="remove" data-ng-click="removeNote()">Clear</a>
+	</div>
+</body>
+</html>
