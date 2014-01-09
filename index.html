@@ -16,8 +16,8 @@
 		<button id="save" data-ng-click="saveNote()">Save</button>
 	</form>
 	
-	<ul id="sortable" dnd-list="model">
-		<li class="" list="clear" dnd-list="model" ng-repeat="note in notes track by $index" ng-style="bgstyle($index)">
+	<ul id="sortable">
+		<li class="" list="check" bgcolor dnd-list="model" ng-repeat="note in notes track by $index" ng-style="bgstyle($index)">
 			<input type="checkbox" value="set" data-ng-model="note.done"></a>
 				<span class="done-{{ note.done }}">{{ note.text }}</span>
 		</li>

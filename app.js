@@ -50,8 +50,8 @@ clearApp.directive('list', function() {
                 scope.$apply(scope.check);
                },
                 stop:function (event, ui) {
-                  scope.$apply(scope.model);
-                  $(this).css('backgroundColor', 'transparent')
+    
+                  scope.$apply(scope.check);
                   },
               axis: 'x',
               revert: true
