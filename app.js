@@ -1,3 +1,5 @@
+var clearApp = angular.module('clearApp', []);
+
 function Cnt($scope) {
 
   $scope.saved = localStorage.getItem('notes');
@@ -15,7 +17,7 @@ function Cnt($scope) {
   };
 
 
-   $scope.removeNote = function() {
+  $scope.removeNote = function() {
     var oldNotes = $scope.notes;
     $scope.notes = [];
     angular.forEach(oldNotes, function(note){
@@ -31,7 +33,27 @@ function Cnt($scope) {
     var blue = 40 + (index * 15);
     var rgb = blue | (green << 8) | (red << 16);
     var sColor = '#' + rgb.toString(16);
-    console.log(sColor);
     return {backgroundColor: sColor};
     };
 }
+
+clearApp.directive('list', function() {
+   return function(scope, element, attrs) {
+
+     $(element[0]).draggable({
+              items:'li',
+              distance: 60,
+              start: function(event, ui) {
+
+                $(this).find('input:checkbox:first').trigger('click');
+
+                scope.$apply(scope.check);
+               },
+                stop:function (event, ui) {
+                  scope.$apply(scope.model);
+                  $(this).css('backgroundColor', 'transparent')
+                  },
+              axis: 'x',
+              revert: true
+             });
+   }});

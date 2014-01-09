@@ -3,10 +3,24 @@ body {
 	font-size: 24px/16px;
 	margin: 0px;
 	background-color: black;
+	overflow-x: hidden; 
 }
-
-wrap {
-	max-width: 720px;
+.checked {
+	width: 100%;
+	height: 60px;
+	background-color: transparent;
+	list-style-type: none;
+	margin-left: 0 auto;
+	padding-top: 30px;
+	padding-left: 10px;
+	color: white;
+	font-size: 24px;
+	display: block;
+}
+.wrap {
+	max-width: 100%;
+	overflow: hidden;
+	position:relative
 }
 form {
 	margin-bottom: 0px;
@@ -24,7 +38,7 @@ input[type="text"] {
     font-size: 15px;
     color: #999;
     padding-left: 5px;
-    vertical-align: bottom
+    vertical-align: bottom;
 }
 input:focus {
 	outline: none;
@@ -34,6 +48,10 @@ input[type=text]:focus
 	color: white;
 	padding: 10px;
 	font-size: 24px;
+}
+input[type=checkbox]
+{
+	display: none;
 }
 li {
 	width: 100%;
@@ -70,13 +88,18 @@ ul{
     color: white;
 }
 .clear {
+	position:absolute; 
+	bottom:0;
+	padding: 10px;
+	width: 100%;
 	text-align: center;
-	margin-top: 50%;
+
 }
 .clear a {
 	color: white;
-
+	text-align: center;
 }
+
 
 
 .animate-enter, 
