@@ -35,7 +35,7 @@ function Cnt($scope) {
     var sColor = '#' + rgb.toString(16);
     return {backgroundColor: sColor};
     };
-}
+};
 
 clearApp.directive('list', function() {
    return function(scope, element, attrs) {
@@ -57,3 +57,4 @@ clearApp.directive('list', function() {
               revert: true
              });
    }});
+
