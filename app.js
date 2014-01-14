@@ -9,7 +9,6 @@ function Cnt($scope) {
   $scope.saveNote = function() {
     var nextid = $scope.getNextId();
     $scope.notes.push({
-      id: nextid,
       text: $scope.note,
       done: false,
     });
@@ -17,14 +16,7 @@ function Cnt($scope) {
     localStorage.setItem('notes', JSON.stringify($scope.notes));
   };
 
-  $scope.getNextId = function() {
-    var count = 0;
-    angular.forEach($scope.notes, function(note) {
-      count = note.id;
-    });
-    var count2 = parseInt(count)+1;
-    return count2;
-  };
+
 
   $scope.removeNote = function() {
     var oldNotes = $scope.notes;

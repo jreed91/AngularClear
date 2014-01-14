@@ -18,7 +18,7 @@
 	</form>
 	
 	<ul id="slippylist">
-		<li list="check"  ng-repeat="note in notes track by note.id" ng-class="{checked : note.done}" ng-style="bgstyle($index)">
+		<li list="check"  ng-repeat="note in notes track by $index" ng-class="{checked : note.done}" ng-style="bgstyle($index)">
 			<input type="checkbox"  value="set" ng-model="note.done"></a>
 				<span class="done-{{ note.done }}">{{ note.text }}</span>
 		</li>
