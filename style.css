@@ -1,4 +1,4 @@
-html, body, #wrapper {
+html, body, #wrap {
     width: 100%;
     min-height: 100%
 }
@@ -25,16 +25,32 @@ form {
 text-decoration: line-through;
 color: white;
 }
+input {
+	font-size: 15px;
+}
 input[type="text"] {
 	border: none;
-	width: 90%;
+	width: 100%;
 	background-color: #d70007;
 	height: 60px;
-	vertical-align: top;
     font-size: 15px;
     color: #999;
     padding-left: 5px;
-    vertical-align: bottom;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    white;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    white;
+ 
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    white;
+
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    white;
+
 }
 input:focus {
 	outline: none;
@@ -74,59 +90,19 @@ ul{
 }
 #save {
 	float: right;
-	background-color: #d70007;
-	border: none;
-	width: 10%;
-    height: 60px;
-    margin-left: -20px;
-    display: inline-block;
-    cursor: pointer;
-    color: white;
+	
+    visibility: hidden;
 }
-.clear {
+
+.clear{
 	position:absolute; 
 	bottom:0;
 	padding: 10px;
 	width: 100%;
 	text-align: center;
-
 }
 .clear a {
 	color: white;
 	text-align: center;
 }
 
-
-
-.animate-enter, 
-.animate-leave { 
-    -webkit-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -moz-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -ms-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -o-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    position: relative;
-    display: block;
-} 
-
-.animate-leave.animate-leave-active,
-.animate-enter {
-    -webkit-transform: rotateX(-180deg);
-    -moz-transform: rotateX(-180deg);
-    -ms-transform: rotateX(-180deg);
-    -o-transform: rotateX(-180deg);
-    transform: rotateX(-180deg);
-    opacity: 0;
-    height: 0px;
-}        
-
-.animate-enter.animate-enter-active,
-.animate-leave {
-    -webkit-transform: rotateX(0deg);
-    -moz-transform: rotateX(0deg);
-    -ms-transform: rotateX(0deg);
-    -o-transform: rotateX(0deg);
-    transform: rotateX(0deg);
-    opacity: 1;
-    height: 30px;
-}

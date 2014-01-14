@@ -9,24 +9,54 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<script src="jquery-touch.js"></script>
-	<script type="text/javascript" src="http://code.angularjs.org/1.2.7/angular-animate.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="style.css">
 <body ng-controller="Cnt">
 	<div class="wrap" >
 	<form id="addNote">
-		<input type="text" data-ng-model="note" class="input" ng-submit="saveNote()" />
-		<button id="save" data-ng-click="saveNote()">Save</button>
+		<input type="text" autofocus="autofocus" placeholder="Enter a Note" ng-model="note" class="input flipin" ng-submit="saveNote()" />
+		<button id="save" class="flipin" ng-click="saveNote()">Save</button>
 	</form>
 	
-	<ul>
+	<ul id="slippylist">
 		<li list="check"  ng-repeat="note in notes track by $index" ng-class="{checked : note.done}" ng-style="bgstyle($index)">
 			<input type="checkbox"  value="set" ng-model="note.done"></a>
 				<span class="done-{{ note.done }}">{{ note.text }}</span>
 		</li>
 	</ul>
 	</div>
-	<div class="clear">
-	<a href="" class="remove" data-ng-click="removeNote()">Clear</a>
+	<div id="clear" class="clear">
+	<a href="" class="remove" ng-click="removeNote()">Clear</a>
 	</div>
+	<script type="text/javascript" src="slip.js"></script>
+		<script type="text/javascript">
+			var list = document.querySelector('ul#slippylist');
+			new Slip(list);
+
+			
+		    list.addEventListener('slip:beforereorder', function(e){
+        if (/demo-no-reorder/.test(e.target.className)) {
+            e.preventDefault();
+        }
+		    }, false);
+
+		    list.addEventListener('slip:beforeswipe', function(e){
+		        if (e.target.nodeName == 'INPUT' || /demo-no-swipe/.test(e.target.className)) {
+		            e.preventDefault();
+		        }
+		    }, false);
+
+		    list.addEventListener('slip:beforewait', function(e){
+		        if (e.target.className.indexOf('instant') > -1) e.preventDefault();
+		    }, false);
+
+		    list.addEventListener('slip:afterswipe', function(e){
+		    	$(this).find('input:checkbox:first').trigger('click');
+		    }, false);
+
+		    list.addEventListener('slip:reorder', function(e){
+		        e.target.parentNode.insertBefore(e.target, e.detail.insertBefore);
+		        return false;
+		    }, false);
+		</script>
 </body>
 </html>

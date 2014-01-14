@@ -35,26 +35,26 @@ function Cnt($scope) {
     var sColor = '#' + rgb.toString(16);
     return {backgroundColor: sColor};
     };
+
 };
 
-clearApp.directive('list', function() {
-   return function(scope, element, attrs) {
+// clearApp.directive('list', function() {
+//    return function(scope, element, attrs) {
 
-     $(element[0]).draggable({
-              items:'li',
-              distance: 60,
-              start: function(event, ui) {
+//      $(element[0]).draggable({
+//               items:'li',
+//               distance: 60,
+//               start: function(event, ui) {
 
-                $(this).find('input:checkbox:first').trigger('click');
-
-                scope.$apply(scope.check);
-               },
-                stop:function (event, ui) {
+//                 $(this).find('input:checkbox:first').trigger('click');
+//                 scope.$apply(scope.check);
+//                },
+//                 stop:function (event, ui) {
     
-                  scope.$apply(scope.check);
-                  },
-              axis: 'x',
-              revert: true
-             });
-   }});
+//                   scope.$apply(scope.check);
+//                   },
+//               axis: 'x',
+//               revert: true
+//              });
+//    }});
 
