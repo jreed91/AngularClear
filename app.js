@@ -3,7 +3,7 @@ var clearApp = angular.module('clearApp', []);
 function Cnt($scope) {
 
   $scope.saved = localStorage.getItem('notes');
-  $scope.notes = (localStorage.getItem('notes')!==null) ? JSON.parse($scope.saved) : [ {id: 1, text: 'Learn AngularJS', done: false}, {id: 2, text: 'Build an Angular app', done: false} ];
+  $scope.notes = (localStorage.getItem('notes')!==null) ? JSON.parse($scope.saved) : [ { text: 'Learn AngularJS', done: false}, {text: 'Build an Angular app', done: false} ];
   localStorage.setItem('notes', JSON.stringify($scope.notes));
 
   $scope.saveNote = function() {
