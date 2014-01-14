@@ -3,19 +3,28 @@ var clearApp = angular.module('clearApp', []);
 function Cnt($scope) {
 
   $scope.saved = localStorage.getItem('notes');
-  $scope.notes = (localStorage.getItem('notes')!==null) ? JSON.parse($scope.saved) : [ {text: 'Learn AngularJS', done: false}, {text: 'Build an Angular app', done: false} ];
+  $scope.notes = (localStorage.getItem('notes')!==null) ? JSON.parse($scope.saved) : [ {id: 1, text: 'Learn AngularJS', done: false}, {id: 2, text: 'Build an Angular app', done: false} ];
   localStorage.setItem('notes', JSON.stringify($scope.notes));
 
-
   $scope.saveNote = function() {
+    var nextid = $scope.getNextId();
     $scope.notes.push({
+      id: nextid,
       text: $scope.note,
-      done: false
+      done: false,
     });
     $scope.note = ''; //clear the input after adding
     localStorage.setItem('notes', JSON.stringify($scope.notes));
   };
 
+  $scope.getNextId = function() {
+    var count = 0;
+    angular.forEach($scope.notes, function(note) {
+      count = note.id;
+    });
+    var count2 = parseInt(count)+1;
+    return count2;
+  };
 
   $scope.removeNote = function() {
     var oldNotes = $scope.notes;

@@ -18,7 +18,7 @@
 	</form>
 	
 	<ul id="slippylist">
-		<li list="check"  ng-repeat="note in notes track by $index" ng-class="{checked : note.done}" ng-style="bgstyle($index)">
+		<li list="check"  ng-repeat="note in notes track by note.id" ng-class="{checked : note.done}" ng-style="bgstyle($index)">
 			<input type="checkbox"  value="set" ng-model="note.done"></a>
 				<span class="done-{{ note.done }}">{{ note.text }}</span>
 		</li>
@@ -34,9 +34,9 @@
 
 			
 		    list.addEventListener('slip:beforereorder', function(e){
-        if (/demo-no-reorder/.test(e.target.className)) {
-            e.preventDefault();
-        }
+		        if (/demo-no-reorder/.test(e.target.className)) {
+		            e.preventDefault();
+		        }
 		    }, false);
 
 		    list.addEventListener('slip:swipe', function(e) {
@@ -50,8 +50,7 @@
 		    }, false);
 
 		    list.addEventListener('slip:reorder', function(e){
-		        e.target.parentNode.insertBefore(e.target, e.detail.insertBefore);
-		        return false;
+		          e.target.parentNode.insertBefore(e.target, e.detail.insertBefore);
 		    }, false);
 		</script>
 </body>
