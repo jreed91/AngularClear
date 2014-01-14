@@ -41,20 +41,9 @@
 
 		    list.addEventListener('slip:swipe', function(e) {
 			    // e.target list item swiped
-			    
 			   var element = e.target.parentNode.appendChild(e.target);
 			   $(element).find('input:checkbox:first').trigger('click');
 			});
-
-		    list.addEventListener('slip:beforeswipe', function(e){
-		        if (e.target.nodeName == 'INPUT' || /demo-no-swipe/.test(e.target.className)) {
-		            e.preventDefault();
-		        }
-		    }, false);
-
-		    list.addEventListener('slip:beforewait', function(e){
-		        if (e.target.className.indexOf('instant') > -1) e.preventDefault();
-		    }, false);
 
 		    list.addEventListener('slip:afterswipe', function(e){
 		        e.target.parentNode.appendChild(e.target);
