@@ -12,8 +12,8 @@
 <body ng-controller="Cnt">
 	<div class="wrap" >
 	<form id="addNote">
-		<input type="text" autofocus="autofocus" placeholder="Enter a Note" ng-model="note" class="input flipin" ng-submit="saveNote()" />
-		<button id="save" class="flipin" ng-click="saveNote()">Save</button>
+		<input type="text" autofocus="autofocus" placeholder="Enter a Note" ng-model="note" class="input" ng-submit="saveNote()" />
+		<button id="save" ng-click="saveNote()">Save</button>
 	</form>
 	
 	<ul id="slippylist">
@@ -51,6 +51,18 @@
 		    list.addEventListener('slip:reorder', function(e){
 		          e.target.parentNode.insertBefore(e.target, e.detail.insertBefore);
 		    }, false);
+
+		       $(window).scroll(function() {
+
+			    if ($(this).scrollTop()>0)
+			     {
+			        $('.input').slideUp("fast");
+			     }
+			    else
+			     {
+			      $('.input').slideDown("fast");
+			     }
+			 });
 		</script>
 </body>
 </html>
