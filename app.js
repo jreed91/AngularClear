@@ -7,7 +7,6 @@ function Cnt($scope) {
   localStorage.setItem('notes', JSON.stringify($scope.notes));
 
   $scope.saveNote = function() {
-    var nextid = $scope.getNextId();
     $scope.notes.push({
       text: $scope.note,
       done: false,
